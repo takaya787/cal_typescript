@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Auth } from '../../modules/auth'
 //types
@@ -6,6 +6,8 @@ import { PostValueType, UserPostType } from '../../types/UserType'
 //contexts
 import { UserContext } from '../../pages/_app';
 import styles from './UserForm.module.css';
+//hooks
+import { useFormErrors } from '../../hooks/UseFormErrors'
 
 const endpoint = process.env.API_ENDPOINT + 'users'
 
@@ -15,7 +17,10 @@ type UserFormProps = {
 
 export const UserForm: React.FC<UserFormProps> = ({ Closemodal }) => {
   const { register, handleSubmit } = useForm();
+
   const initialerrors = { name: '', email: '', password: '', password_confirmation: '' };
+  //errorを表示させるCustom Hooks
+  const { errors, handleError, resetError } = useFormErrors(initialerrors);
 
   //_appからcontextsを受け取る
   const { setUser } = useContext(UserContext);
@@ -43,6 +48,7 @@ export const UserForm: React.FC<UserFormProps> = ({ Closemodal }) => {
         console.log(data);
         if (data.errors) {
           console.log(data.errors);
+          handleError(data.errors);
           return
         }
         // console.log(data.token);
@@ -53,7 +59,7 @@ export const UserForm: React.FC<UserFormProps> = ({ Closemodal }) => {
         setUser({ id: user_data.id, email: user_data.email, name: user_data.name });
         Closemodal()
         //Login関連の処理 終了
-        // resetError();
+        resetError();
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -77,9 +83,9 @@ export const UserForm: React.FC<UserFormProps> = ({ Closemodal }) => {
         type="email"
         ref={register({ required: 'emailは必須です' })}
       />
-      {/* {errors.email !== '' && (
+      {errors.email !== '' && (
         <p className={styles.form_error}>Email {errors.email}</p>
-      )} */}
+      )}
       <label className={styles.label} htmlFor="password">パスワード</label>
       <input
         id="password"
@@ -88,9 +94,9 @@ export const UserForm: React.FC<UserFormProps> = ({ Closemodal }) => {
         name="password"
         ref={register({ required: 'passwordは必須です' })}
       />
-      {/* {errors.password !== '' && (
+      {errors.password !== '' && (
         <p className={styles.form_error}>Password {errors.password}</p>
-      )} */}
+      )}
       <label
         className={styles.label}
         htmlFor="password_confirmation">
@@ -103,9 +109,9 @@ export const UserForm: React.FC<UserFormProps> = ({ Closemodal }) => {
         name="password_confirmation"
         ref={register({ required: 'password_confirmationは必須です' })}
       />
-      {/* {errors.password_confirmation !== "" && (
+      {errors.password_confirmation !== "" && (
         <p className={styles.form_error}>Password_confirmation {errors.password_confirmation}</p>
-      )} */}
+      )}
       <button type="submit" className={styles.form_submit}>登録する</button>
     </form>
   )
