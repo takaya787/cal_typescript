@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from './Modal.module.css';
+//components
+import { LoginForm } from './Forms/LoginForm'
 
 export const Modal: React.FC = () => {
   const [isSignup, setIsSignup] = useState<boolean>(false);
@@ -44,7 +46,7 @@ export const Modal: React.FC = () => {
             {isLogin && (
               <>
                 <h2 className={styles.content_title}>Log inはこちら！</h2>
-                {/* <LoginForm /> */}
+                <LoginForm Closemodal={Closemodal} />
                 <button className={styles.content_switch} onClick={Signupcontroll}>ユーザー登録はこちら</button>
               </>
             )}

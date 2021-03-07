@@ -1,11 +1,21 @@
+import { useContext } from 'react';
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 //components
 import { Modal } from '../components/Modal'
 //others
 import { Auth } from '../modules/auth'
+import { UserContext } from '../pages/_app';
 
 const Home: React.FC = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  //Logout時の処理をまとめる
+  const handleLogout = (): void => {
+    setUser({ email: '', id: 0, name: '' });
+    Auth.logout();
+    console.log('You are logged out successfully')
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -19,8 +29,8 @@ const Home: React.FC = () => {
       )}
       {Auth.isLoggedIn() && (
         <>
-          {/* <p>Welcome {user.name}!</p>
-          <button onClick={handleLogout}>Log out</button> */}
+          <p>Welcome {user.name}!</p>
+          <button onClick={handleLogout}>Log out</button>
         </>
       )}
 
