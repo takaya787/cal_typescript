@@ -6,6 +6,8 @@ import { Auth } from '../modules/auth';
 //Login処理用のURL
 const LoginUrl = `${process.env.API_ENDPOINT}auto_login`
 
+export const UserContext = createContext()
+
 function MyApp({ Component, pageProps }) {
   //ユーザー情報を取得する
   const [user, setUser] = useState({ email: '', id: 0, name: '' })
@@ -42,7 +44,11 @@ function MyApp({ Component, pageProps }) {
     }
   }, []) // [] => changed to => [user]
 
-  return <Component {...pageProps} />
+  return (
+    <UserContext.Provider value={Uservalue}>
+      <Component {...pageProps} />
+    </UserContext.Provider>
+  )
 }
 
 export default MyApp
