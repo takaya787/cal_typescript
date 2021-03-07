@@ -12,11 +12,12 @@ import styles from './UserForm.module.css';
 //APIの送信先
 const endpoint = process.env.API_ENDPOINT + 'login'
 
+//Propsの型付けをしたら、propsは直接引数として、定義しておく
 type LoginFormProps = {
-  Closemodal: void
+  Closemodal: VoidFunction
 }
 
-export function LoginForm(props) {
+export const LoginForm: React.FC<LoginFormProps> = ({ Closemodal }) => {
   const { register, handleSubmit } = useForm();
   const initialerrors = { name: '', email: '', password: '', password_confirmation: '' };
 
@@ -43,7 +44,7 @@ export function LoginForm(props) {
         if (data.error) {
           // console.log(data.error);
           alert(data.error);
-          props.Closemodal()
+          // Closemodal()
           return
         }
         // console.log(data.token);
@@ -52,7 +53,7 @@ export function LoginForm(props) {
         Auth.login(data.token);
         const user_data = data.user
         setUser({ id: user_data.id, email: user_data.email, name: user_data.name });
-        props.Closemodal()
+        Closemodal()
         //Login関連の処理 終了
         // resetError();
         // mutate(baseUrl);
