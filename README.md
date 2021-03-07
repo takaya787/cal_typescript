@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Your Schedule(typescript)
+[アプリはこちら](https://cal-frontend.vercel.app/)<br/>
+[Javascript側のレポジトリーはこちら](https://github.com/takaya787/cal_frontend)
 
-## Getting Started
+###  Your Scheduleを**typescript**を用いてリファクタリングしました。
 
-First, run the development server:
+これはカレンダーアプリのフロントエンドを**typescript**でリファクタリングしたものになります。
+全く同じ内容のNext.jsを用いて作成されたフロントエンド側のアプリケーションですが、**typescript**と**javascript**によるコードの違いを確認できると思うので、ぜひ見比べてみてください。
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**バックエンド**側のRails API側のレポジトリーは[こちら](https://github.com/takaya787/cal_backend)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## サイト概要
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+**Your Schedule**はあなたのスケジュール帳をウェブ上に作成できます。<br>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 作成理由　
+カレンダーで、予定を管理することと同時に、タスク管理もできるようにしたかった。
 
-## Learn More
+## 使用技術
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Ruby 2.7.2, Rails 6.0.3 (backend側の技術選定)
+* React
+* Next.js
+* typescript
+* Docker, Docker-compose (開発環境)
+* Postgresql(DB)
