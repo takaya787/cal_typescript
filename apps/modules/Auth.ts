@@ -1,8 +1,5 @@
 export class Auth {
   //localstorageがrailsのsessionに等しい
-  //  if(typeof window !== 'undefined') {
-  //   localStorage.setItem('myCat', 'Tom');
-  // }
   static login(token: string): void {
     if (typeof window !== 'undefined') {
       localStorage.setItem('token', token)

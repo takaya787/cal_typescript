@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+//components
+import { Modal } from '../components/Modal'
 //others
 import { Auth } from '../modules/auth'
 
@@ -13,8 +15,7 @@ const Home: React.FC = () => {
       </Head>
       <h1 className={styles.title}>カレンダーでスケジュール管理！</h1>
       {!Auth.isLoggedIn() && (
-        // <Modal />
-        <p>not login</p>
+        <Modal />
       )}
       {Auth.isLoggedIn() && (
         <>
