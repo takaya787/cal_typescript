@@ -14,8 +14,8 @@ export type Tasks_data = {
   tasks: each_task[]
 }
 
-export type Tasks_Context = {
-  tasks_data: Tasks_data,
-  tasks_error: string,
+export type Tasks_Context_Value = {
+  tasks_data: Tasks_data | undefined | null,
+  tasks_error: string | undefined,
   TasksUrl: string
 }

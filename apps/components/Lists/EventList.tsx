@@ -4,6 +4,8 @@ import styles from './EventList.module.css'
 import { EachList } from '../Lists/EventEach'
 //others
 import { EventsContext } from '../../components/Main'
+//type
+import { Each_event } from '../../types/EventType'
 type EventListProps = {
   activeDate: Date
 }
@@ -11,7 +13,7 @@ type EventListProps = {
 export const EventList: React.FC<EventListProps> = ({ activeDate }) => {
   const { events_data } = useContext(EventsContext);
   //実際に表示するeventsを選定
-  const [actualEvents, setActualEvents] = useState([])
+  const [actualEvents, setActualEvents] = useState<Each_event[]>([])
   const active_year = activeDate.getFullYear()
   const active_month = activeDate.getMonth() + 1
 
@@ -41,7 +43,7 @@ export const EventList: React.FC<EventListProps> = ({ activeDate }) => {
   //表示するeventsを決定
   useEffect(function () {
     //events_dataに値がセットされていなければ、return
-    if (events_data === undefined) {
+    if (events_data === undefined || events_data === null) {
       return
     } else if (!events_data.hasOwnProperty('events')) {
       return

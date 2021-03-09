@@ -9,11 +9,11 @@ import { PostForm } from '../components/Forms/PostForm'
 import { useEventsSWR, EventsUrl } from '../hooks/useEventsSWR'
 import { useTasksSWR, TasksUrl } from '../hooks/useTasksSWR'
 //types
-import { Events_Context } from '../types/EventType'
-import { Tasks_Context } from '../types/TaskType'
+import { Events_Context_Value } from '../types/EventType'
+import { Tasks_Context_Value } from '../types/TaskType'
 
-export const EventsContext = createContext({} as Events_Context);
-export const TasksContext = createContext({} as Tasks_Context);
+export const EventsContext = createContext({} as Events_Context_Value);
+export const TasksContext = createContext({} as Tasks_Context_Value);
 
 export const Main: React.FC = () => {
   //react-calendar用のstate
@@ -25,13 +25,13 @@ export const Main: React.FC = () => {
 
   //ユーザーの全てのeventを取得する
   const { events_data, events_error } = useEventsSWR()
-  const Eventsvalue = {
+  const Eventsvalue: Events_Context_Value = {
     events_data, events_error, EventsUrl
   };
 
   //ユーザーの全てのtaskを取得する
   const { tasks_data, tasks_error } = useTasksSWR()
-  const Tasksvalue = {
+  const Tasksvalue: Tasks_Context_Value = {
     tasks_data, tasks_error, TasksUrl
   };
   return (
@@ -42,7 +42,7 @@ export const Main: React.FC = () => {
         onClickDay={(): void => {
           setIsPostForm(true);
         }}
-        onActiveStartDateChange={({ activeStartDate }) => setActiveDate(activeStartDate)}
+        onActiveStartDateChange={(activeStartDate: Date) => setActiveDate(activeStartDate)}
         tileClassName={styles.height}
         // tileContent={({ date, view }) => getTileCircle(date, view)}
 
