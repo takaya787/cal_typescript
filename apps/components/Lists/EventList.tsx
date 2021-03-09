@@ -48,7 +48,7 @@ export const EventList: React.FC<EventListProps> = ({ activeDate }) => {
     } else if (!events_data.hasOwnProperty('events')) {
       return
     }
-    console.log(events_data)
+    // console.log(events_data)
     const events = events_data.events
     const filteredevents = events.filter((event) => {
       return (event.month === active_month && event.year === active_year)

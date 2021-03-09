@@ -38,11 +38,11 @@ export const Main: React.FC = () => {
     <>
       <Calender
         className={styles.main}
-        onChange={onChange}
+        onChange={() => onChange}
         onClickDay={(): void => {
           setIsPostForm(true);
         }}
-        onActiveStartDateChange={(activeStartDate: Date) => setActiveDate(activeStartDate)}
+        onActiveStartDateChange={({ activeStartDate }) => setActiveDate(activeStartDate)}
         tileClassName={styles.height}
         // tileContent={({ date, view }) => getTileCircle(date, view)}
 
