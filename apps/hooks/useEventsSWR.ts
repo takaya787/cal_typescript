@@ -6,13 +6,6 @@ import { Events_data } from '../types/EventType'
 export const EventsUrl = `${process.env.API_ENDPOINT}events`
 
 //SWR用のfetcher
-// const Eventfetcher = () => fetch(EventsUrl, {
-//   method: 'GET',
-//   headers: {
-//     'Authorization': `Bearer ${Auth.getToken()}`,
-//     'Content-Type': 'application/json'
-//   }
-// }).then(res => res.json())
 async function Eventsfetcher(): Promise<Events_data | null> {
   const response = await fetch(EventsUrl, {
     method: 'GET',
@@ -21,7 +14,6 @@ async function Eventsfetcher(): Promise<Events_data | null> {
       'Content-Type': 'application/json'
     }
   });
-
   return response.json()
 }
 

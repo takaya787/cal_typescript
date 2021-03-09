@@ -7,6 +7,7 @@ import { EventList } from '../components/Lists/EventList'
 import { PostForm } from '../components/Forms/PostForm'
 // Hooks
 import { useEventsSWR, EventsUrl } from '../hooks/useEventsSWR'
+import { useTasksSWR, TasksUrl } from '../hooks/useTasksSWR'
 //types
 import { Events_Context } from '../types/EventType'
 
