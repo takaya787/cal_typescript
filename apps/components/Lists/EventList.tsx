@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styles from './EventList.module.css'
 //components
-import { EachList } from '../Lists/EachList'
+import { EachList } from '../Lists/EventEach'
 //others
 import { EventsContext } from '../../components/Main'
 type EventListProps = {
@@ -41,13 +41,12 @@ export const EventList: React.FC<EventListProps> = ({ activeDate }) => {
   //表示するeventsを決定
   useEffect(function () {
     //events_dataに値がセットされていなければ、return
-    console.log('useEffect発火')
-    console.log(events_data);
     if (events_data === undefined) {
       return
     } else if (!events_data.hasOwnProperty('events')) {
       return
     }
+    console.log(events_data)
     const events = events_data.events
     const filteredevents = events.filter((event) => {
       return (event.month === active_month && event.year === active_year)
