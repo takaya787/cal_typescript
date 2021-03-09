@@ -2,6 +2,8 @@ import React, { useState, useEffect, createContext } from 'react'
 import Calender from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import styles from './Main.module.css'
+//components
+import { EventList } from '../components/Lists/EventList'
 // Hooks
 import { useEventsSWR, EventsUrl } from '../hooks/useEventsSWR'
 //types
@@ -38,9 +40,13 @@ export const Main: React.FC = () => {
         // locale={"ja-JP"}
         view={"month"}
       />
-      <EventsContext.Provider value={Eventsvalue}>
-        <div>events</div>
-      </EventsContext.Provider>
+      <div className={styles.board}>
+        <div className={styles.inline}>
+          <EventsContext.Provider value={Eventsvalue}>
+            <EventList activeDate={activeDate} />
+          </EventsContext.Provider>
+        </div>
+      </div>
     </>
   )
 }
