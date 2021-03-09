@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import useSWR from 'swr';
 //others
 import { Auth } from '../modules/auth'
@@ -18,7 +17,10 @@ const Eventfetcher = () => fetch(EventsUrl, {
 // SWRはSuspence optionで型付けが可能
 
 export const useEventsSWR = () => {
-  const { data: events_data, error: event_errors } = useSWR(EventsUrl, Eventfetcher, { suspense: true }) as Events_SWR_type;
+  // const { data: events_data, error: events_error } = useSWR(EventsUrl, Eventfetcher, { suspense: true }) as Events_SWR_type;
 
-  return { events_data, event_errors }
+  const { data: events_data, error: events_error } = useSWR(EventsUrl, Eventfetcher)
+
+
+  return { events_data, events_error }
 }

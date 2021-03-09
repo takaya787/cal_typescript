@@ -9,10 +9,16 @@ type each_event = {
   created_at: TimeRanges,
   updated_at: TimeRanges
 }
-
-type Events_data = each_event[]
-
+export type Events_data = each_event[]
+//SWR通信で用いるEVENTの型
 export type Events_SWR_type = {
   data: Events_data,
   error: string
+}
+
+//Event Contextの型
+export type Events_Context = {
+  events_data: Events_data,
+  events_error: string,
+  EventsUrl: string
 }
