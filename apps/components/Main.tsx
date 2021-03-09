@@ -10,8 +10,10 @@ import { useEventsSWR, EventsUrl } from '../hooks/useEventsSWR'
 import { useTasksSWR, TasksUrl } from '../hooks/useTasksSWR'
 //types
 import { Events_Context } from '../types/EventType'
+import { Tasks_Context } from '../types/TaskType'
 
 export const EventsContext = createContext({} as Events_Context);
+export const TasksContext = createContext({} as Tasks_Context);
 
 export const Main: React.FC = () => {
   //react-calendar用のstate
@@ -25,6 +27,12 @@ export const Main: React.FC = () => {
   const { events_data, events_error } = useEventsSWR()
   const Eventsvalue = {
     events_data, events_error, EventsUrl
+  };
+
+  //ユーザーの全てのtaskを取得する
+  const { tasks_data, tasks_error } = useTasksSWR()
+  const Tasksvalue = {
+    tasks_data, tasks_error, TasksUrl
   };
   return (
     <>
@@ -46,14 +54,16 @@ export const Main: React.FC = () => {
         view={"month"}
       />
       <EventsContext.Provider value={Eventsvalue}>
-        {isPostForm && (
-          <PostForm props_date={value} setIsPostForm={setIsPostForm} />
-        )}
-        <div className={styles.board}>
-          <div className={styles.inline}>
-            <EventList activeDate={activeDate} />
+        <TasksContext.Provider value={Tasksvalue}>
+          {isPostForm && (
+            <PostForm props_date={value} setIsPostForm={setIsPostForm} />
+          )}
+          <div className={styles.board}>
+            <div className={styles.inline}>
+              <EventList activeDate={activeDate} />
+            </div>
           </div>
-        </div>
+        </TasksContext.Provider>
       </EventsContext.Provider>
     </>
   )
