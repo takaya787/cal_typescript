@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import Calender from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import styles from './Main.module.css'
+// Hooks
+import { useEventsSWR } from '../hooks/useEventsSWR'
 
 export const Main: React.FC = () => {
   //react-calendar用のstate
