@@ -4,6 +4,7 @@ import 'react-calendar/dist/Calendar.css'
 import styles from './Main.module.css'
 //components
 import { EventList } from '../components/Lists/EventList'
+import { PostForm } from '../components/Forms/PostForm'
 // Hooks
 import { useEventsSWR, EventsUrl } from '../hooks/useEventsSWR'
 //types
@@ -15,6 +16,9 @@ export const Main: React.FC = () => {
   //react-calendar用のstate
   const [value, onChange] = useState<Date>(new Date());
   const [activeDate, setActiveDate] = useState<Date>(new Date());
+  //EventForm用のstate
+  const [isPostForm, setIsPostForm] = useState(false);
+
 
   //ユーザーの全てのeventを取得する
   const { events_data, events_error } = useEventsSWR()
@@ -26,9 +30,9 @@ export const Main: React.FC = () => {
       <Calender
         className={styles.main}
         onChange={onChange}
-        // onClickDay={(value, event) => {
-        //   setIsEventForm(true);
-        // }}
+        onClickDay={(): void => {
+          setIsPostForm(true);
+        }}
         onActiveStartDateChange={({ activeStartDate }) => setActiveDate(activeStartDate)}
         tileClassName={styles.height}
         // tileContent={({ date, view }) => getTileCircle(date, view)}
@@ -40,13 +44,16 @@ export const Main: React.FC = () => {
         // locale={"ja-JP"}
         view={"month"}
       />
-      <div className={styles.board}>
-        <div className={styles.inline}>
-          <EventsContext.Provider value={Eventsvalue}>
+      <EventsContext.Provider value={Eventsvalue}>
+        {isPostForm && (
+          <PostForm props_date={value} setIsPostForm={setIsPostForm} />
+        )}
+        <div className={styles.board}>
+          <div className={styles.inline}>
             <EventList activeDate={activeDate} />
-          </EventsContext.Provider>
+          </div>
         </div>
-      </div>
+      </EventsContext.Provider>
     </>
   )
 }
