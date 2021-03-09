@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 //components
 import { Modal } from '../components/Modal'
+import { Main } from '../components/Main'
 //others
 import { Auth } from '../modules/auth'
 import { UserContext } from '../pages/_app';
@@ -33,7 +34,7 @@ const Home: React.FC = () => {
           <button onClick={handleLogout}>Log out</button>
         </>
       )}
-
+      <Main />
     </div>
   )
 }

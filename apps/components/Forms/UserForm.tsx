@@ -7,7 +7,7 @@ import { PostValueType, UserPostType } from '../../types/UserType'
 import { UserContext } from '../../pages/_app';
 import styles from './UserForm.module.css';
 //hooks
-import { useFormErrors } from '../../hooks/UseFormErrors'
+import { useFormErrors } from '../../hooks/useFormErrors'
 
 const endpoint = process.env.API_ENDPOINT + 'users'
 
