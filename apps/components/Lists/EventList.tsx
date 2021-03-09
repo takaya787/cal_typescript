@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styles from './EventList.module.css'
+//components
+import { EachList } from '../Lists/EachList'
 //others
 import { EventsContext } from '../../components/Main'
 type EventListProps = {
@@ -59,9 +61,9 @@ export const EventList: React.FC<EventListProps> = ({ activeDate }) => {
       <h3 className={styles.title}>予定一覧　{active_year}年 {active_month}月 </h3>
       <div className={styles.eventlist}>
         <ul className={styles.lists}>
-          {/* {actualEvents.map(event => (
+          {actualEvents.map(event => (
             <li key={event.id} className={list_class(today, event.date, event.month, event.year)}><EachList date={event.date} title={event.title} memo={event.memo} id={event.id} /></li>
-          ))} */}
+          ))}
         </ul>
       </div>
     </>
