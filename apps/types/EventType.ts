@@ -1,3 +1,4 @@
+//FetchEventの型
 type each_event = {
   id: number,
   title: string,
@@ -10,11 +11,12 @@ type each_event = {
   updated_at: TimeRanges
 }
 export type Events_data = each_event[]
+
 //SWR通信で用いるEVENTの型
-export type Events_SWR_type = {
-  data: Events_data,
-  error: string
-}
+// export type Events_SWR_type = {
+//   data: Events_data,
+//   error: string
+// }
 
 //Event Contextの型
 export type Events_Context = {

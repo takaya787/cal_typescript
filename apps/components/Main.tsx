@@ -27,7 +27,7 @@ export const Main: React.FC = () => {
         // onClickDay={(value, event) => {
         //   setIsEventForm(true);
         // }}
-        onActiveStartDateChange={({ activeStartDate, value, view }) => setActiveDate(activeStartDate)}
+        onActiveStartDateChange={({ activeStartDate }) => setActiveDate(activeStartDate)}
         tileClassName={styles.height}
         // tileContent={({ date, view }) => getTileCircle(date, view)}
 
