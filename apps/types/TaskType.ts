@@ -1,4 +1,4 @@
-type each_task = {
+export type Each_task = {
   id: number,
   title: string,
   memo?: string,
@@ -11,7 +11,7 @@ type each_task = {
   updated_at: TimeRanges
 }
 export type Tasks_data = {
-  tasks: each_task[]
+  tasks: Each_task[]
 }
 
 export type Tasks_Context_Value = {
@@ -19,3 +19,5 @@ export type Tasks_Context_Value = {
   tasks_error: string | undefined,
   TasksUrl: string
 }
+
+export type Tasks_filter = 'ALL' | 'TASKS' | 'COMPLETED'

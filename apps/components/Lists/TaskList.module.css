@@ -1,0 +1,144 @@
+.eventlist {
+  display: inline-block;
+  width: 90%;
+  margin: 0 5%;
+  height: auto;
+  /* max-height: 350px; */
+  border: 1px solid brown;
+  border-radius: 10px;
+}
+
+.title {
+  text-align: left;
+  margin-left: 10%;
+}
+.list_board {
+  overflow-y: scroll;
+}
+.lists {
+  height: auto;
+  max-height: 305px;
+  min-height: 20px;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+.list_each {
+  height: 75px;
+  font-size: 16px;
+  padding: 10px 5% 10px;
+  /* margin: 10px 5%; */
+  border-top: 1px solid black;
+  overflow-y: scroll;
+}
+/* listの内容を含む親class */
+/* .list_content {
+  display: inline-block;
+} */
+.list_date {
+  margin-right: 10px;
+}
+.list_switch {
+  background-color: red;
+  margin-right: 10px;
+  border: solid 1px wheat;
+  border-radius: 10px;
+  color: white;
+  opacity: 0.6;
+}
+.list_switch:focus{
+  outline: none;
+}
+.list_switch:hover{
+  opacity: 1.0;
+}
+.delete_button {
+  float: right;
+  background-color: brown;
+  border: solid 1px wheat;
+  border-radius: 10px;
+  color: white;
+  opacity: 0.6;
+}
+.delete_button:focus{
+  outline: none;
+}
+.delete_button:hover{
+  opacity: 1.0;
+}
+
+.memo {
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.past {
+  opacity: 0.4;
+  background-color: wheat;
+}
+.longer {
+  height: 140px;
+}
+
+.blue {
+  background-color: blue;
+}
+
+/* taskのボタン部分css */
+.task_line {
+  float: left;
+  margin-right: 10px;
+  height: 45px;
+  width: 10px;
+  border-radius: 10px;
+  background-color: red;
+}
+.task_buttons {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid red;
+}
+.task_button {
+  width: 33%;
+  margin: 10px;
+  padding: 5px 0;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  opacity: 0.6;
+}
+.task_button:focus {
+  outline: none;
+}
+.task_button:hover {
+  opacity: 0.9;
+}
+.task_button_selected {
+  font-weight: bold;
+  opacity: 1.0;
+}
+.change_button {
+  background-color: purple;
+  border: solid 1px wheat;
+  border-radius: 10px;
+  color: white;
+  opacity: 0.6;
+}
+.change_button:focus {
+  outline: none;
+}
+.change_button:hover {
+  opacity: 1.0;
+}
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
+}
+.red {
+  background-color: red;
+}

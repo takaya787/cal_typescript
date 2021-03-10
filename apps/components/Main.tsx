@@ -3,6 +3,7 @@ import Calender from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import styles from './Main.module.css'
 //components
+import { TaskList } from '../components/Lists/TaskList'
 import { EventList } from '../components/Lists/EventList'
 import { PostForm } from '../components/Forms/PostForm'
 // Hooks
@@ -61,6 +62,9 @@ export const Main: React.FC = () => {
           <div className={styles.board}>
             <div className={styles.inline}>
               <EventList activeDate={activeDate} />
+            </div>
+            <div className={styles.inline}>
+              <TaskList activeDate={activeDate} />
             </div>
           </div>
         </TasksContext.Provider>
